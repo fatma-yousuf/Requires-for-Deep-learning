@@ -1,4 +1,4 @@
-# Student C — Classical ML Baselines
+# Student C: Classical ML Baselines
 # Project 9: Phishing URL Detection
 # Python 3.9+  |  CPU only  |  No GPU required
 

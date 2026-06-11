@@ -1,16 +1,15 @@
-# Development Log — Student C (Fatma Abu Al Wafa)
+# Development Log: Student C (Fatma Abu Al Wafa)
 ## Project 9: Neural Models for Phishing URL and Website Detection
 ## Queen's University | CISC 867 Deep Learning | 2026
 
 **Role:** Student C — Baseline features, imbalanced handling, reporting  
-**Notebook:** `StudentC/notebook/Student_C_baseline_models.ipynb`
+**Notebook:** `StudentC/notebook/Student_C_baseline_models_Final_Version.ipynb`
 
 > This log documents weekly progress, key decisions, and issues encountered.
-> It can be merged into the main team `LOG.md`.
+> It can be merged into the main team's `LOG.md`.
 
 ---
-
-## Week 1 — 09 May 2026 to 12 May 2026
+## Week 1:  09 May 2026 to 12 May 2026
 
 ### Progress
 - Reviewed all assigned reference papers for the classical baseline component.
@@ -27,7 +26,7 @@
   weighting (SMOTE on RF/XGB adds noise without meaningful gain on tabular features).
 - **Evaluation protocol fixed:** all models evaluated on 4 splits — validation,
   original test (~57/43), balanced test (50/50), imbalanced test (80/20).
-  Using 8 metrics: accuracy, precision, recall, F1, ROC-AUC, FPR, FNR, confusion matrix.
+  Using 8 metrics: accuracy, precision, recall, F1, ROC-AUC, FPR, FNR, and confusion matrix.
 
 ### Issues Encountered
 - None at this stage. Literature review and planning completed on schedule.
@@ -56,7 +55,6 @@
   (fitted on training set only, applied to validation and test — no leakage).
 
 ### Hyperparameters Fixed
-
 | Model | Configuration |
 |---|---|
 | LR | `C=1.0, max_iter=2000, solver='lbfgs', RANDOM_STATE=42` |
@@ -71,7 +69,6 @@
 | SVM (SMOTE) | trained on SMOTE-balanced file |
 
 ### CPU Training Times (Google Colab CPU)
-
 | Model | Time |
 |---|---|
 | LR (no handling) | 3.30 s |
@@ -87,7 +84,7 @@
 
 ### Issues Encountered
 - **Issue:** `LinearSVC` raises `AttributeError: 'LinearSVC' object has no attribute 'predict_proba'`
-  when the evaluation function calls `model.predict_proba(X)` for ROC-AUC.
+  When the evaluation function calls `model.predict_proba(X)` for ROC-AUC.
   **Resolution:** wrapped all SVM variants in `CalibratedClassifierCV(method='sigmoid', cv=3)`,
   which adds probability calibration without requiring code changes to the evaluation function.
 
@@ -95,17 +92,17 @@
 - Written in IEEE two-column format, official IEEE conference template.
 - Submitted on schedule. Score: **98 / 100**.
 - TA feedback for final report:
-  1. Insert GitHub repository link in the introduction.
+  1. Insert the GitHub repository link in the introduction.
   2. Add formal metric equations (Accuracy, Precision, Recall, F1, AUC, FPR, FNR).
   3. Document at least two implementation challenges.
 
 ---
 
-## Week 3 — 19 May 2026 to 22 May 2026
+## Week 3: 19 May 2026 to 22 May 2026
 
 ### Progress
 - Built and trained the Stacking Ensemble.
-- Selected best model using validation F1 (no test-set access during selection).
+- Selected the best model using validation F1 (no test-set access during selection).
 - Completed RF feature importance analysis and feature-subset ablation study.
 - Completed threshold sensitivity analysis, confusion matrices, ROC curves, error analysis,
   and CPU inference time benchmark.
@@ -181,13 +178,14 @@ Adding all 23 features gains +3.52 pp. This motivated Student B's Hybrid Fusion 
 - **Issue:** Stacking Ensemble training time on CPU was significantly longer than expected
   (339.2 seconds). This is due to 5-fold cross-validation across three base learners on a
   training set of ~90,000 samples.
-  **Resolution:** No workaround was applied (cannot reduce cv below 5 without risking
+  **Resolution:** No workaround was applied (cannot reduce CV below 5 without risking
   meta-learner overfitting). The 339.2 s training time is acceptable since training is
   a one-time cost; inference remains at 0.3367 ms/URL.
 
 ---
+## Egypt observed a six-day official public holiday for Eid al-Adha, which ran from Tuesday, May 26, through Sunday, May 31, 2026
 
-## Week 4 — 30 May 2026 to 04 June 2026
+## Week 4: 04 June 2026 to 11 June 2026
 
 ### Progress
 - Built the joint classical vs. deep learning comparison table.
@@ -198,12 +196,13 @@ Adding all 23 features gains +3.52 pp. This motivated Student B's Hybrid Fusion 
 ### Key Decisions
 - **Joint comparison table method:** classical results merged from `baseline_all_results.csv`;
   deep learning results read from Student B's three output CSVs
-  (`results_original_test_distribution.csv`, etc.). Both datasets aligned on the same
+  (`results_original_test_distribution.csv`, etc...). Both datasets were aligned on the same
   column schema before concatenation.
 - **TA feedback addressed:**
   1. GitHub link added to Section I.
   2. Seven formal LaTeX metric equations added to Section V.
-  3. Two implementation challenges documented in Section V.
+  3. Two implementation challenges are documented in Section V.
+  4. Complete The Final Report
 
 ### Final Joint Comparison (original test set, best per family)
 
@@ -223,7 +222,6 @@ Adding all 23 features gains +3.52 pp. This motivated Student B's Hybrid Fusion 
 ---
 
 ## Current Status
-
-Student C work is complete. All classical ML results are committed to
+Student C's work is complete. All classical ML results are committed to
 `StudentC/Reports/Tables/` and `StudentC/Reports/Figures/`. The best baseline model
 (`best_baseline_model.joblib`) is committed to `StudentC/Best_models/`.

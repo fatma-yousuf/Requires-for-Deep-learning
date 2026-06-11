@@ -1,9 +1,9 @@
-# Student C — Classical Machine Learning Baselines
+# Student C:  Classical Machine Learning Baselines
 ## Project 9: Neural Models for Phishing URL and Website Detection
 **Queen's University | CISC 867 Deep Learning | 2026**
 
 **Student:** Fatma Abu Al Wafa  
-**Role:** Student C — Baseline features, imbalanced handling, reporting
+**Role:** Student C: Baseline features, imbalanced handling, reporting
 
 ---
 
@@ -12,16 +12,16 @@
 Phishing URLs mimic legitimate websites to steal user credentials. This component
 implements classical machine learning baselines that classify URLs as phishing (1) or
 legitimate (0) using 23 handcrafted URL-structure features. No page rendering,
-JavaScript execution, or WHOIS queries are required — the classifier is fully
+JavaScript execution, or WHOIS queries, are required — the classifier is fully
 stateless and suitable for real-time deployment in browser plugins and firewalls.
 
 **Project objectives covered by Student C:**
 - Implement classical feature-based baselines (LR, SVM, RF, XGBoost, Stacking Ensemble).
-- Compare three imbalance-handling strategies: no handling, class weighting, SMOTE.
+- Compare three imbalance-handling strategies: no handling, class weighting, and SMOTE.
 - Evaluate on original, balanced (50/50), and imbalanced (80/20) test distributions.
 - Analyse false positives and false negatives.
 - Benchmark CPU inference latency.
-- Produce joint classical + deep learning comparison table.
+- Produce a joint classical + deep learning comparison table.
 
 ---
 
@@ -73,9 +73,9 @@ produced by Student A's pipeline (`StudentA/notebook`).
 | Train (original) | 90,843 | 42.2% |
 | Train (SMOTE-balanced) | 104,960 | 50.0% |
 | Validation | 19,466 | 42.2% |
-| Test — original | 19,467 | 42.2% |
-| Test — balanced 50/50 | 16,442 | 50.0% |
-| Test — imbalanced 80/20 | 14,057 | 20.0% |
+| Test (original)| 19,467 | 42.2% |
+| Test (balanced 50/50) | 16,442 | 50.0% |
+| Test (imbalanced 80/20) | 14,057 | 20.0% |
 
 **23 handcrafted features used:**
 `url_length`, `hostname_length`, `path_length`, `query_length`, `num_dots`,
@@ -105,20 +105,20 @@ and SMOTE sampling (via `random_state=RANDOM_STATE`).
 
 ## How to Run
 
-### Step 1 — Install dependencies
+### Step 1: Install dependencies
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements_Person C_Classical ML.txt
 ```
 
-### Step 2 — Run Student A's notebook first
+### Step 2: Run Student A's notebook first
 
 Student A's notebook must be executed before this notebook.
-It produces all feature files that this notebook reads as input.
+It produces all the feature files that this notebook reads as input.
 
-Notebook: `StudentA/notebook/01_studentA_data_preparation - Final Submission.ipynb`
+Notebook: `StudentA/notebook/01_studentA_data_preparation - Final Submission.ipynb.`
 
-### Step 3 — Configure paths
+### Step 3: Configure paths
 
 Open the notebook and update `BASE` in **Section 2** to point to the repository root:
 
@@ -132,7 +132,7 @@ BASE = Path("/path/to/Deeplearning-URLCNN/")
 
 All other paths are derived from `BASE` automatically. No other changes are needed.
 
-### Step 4 — Verify required input files
+### Step 4: Verify required input files
 
 Before running, confirm these files exist (produced by Student A):
 
@@ -151,7 +151,7 @@ StudentA/data/features_scaled/train_features_smote_scaled.csv
 StudentA/data/features/test.csv                     ← raw URLs for error analysis
 ```
 
-### Step 5 — (Optional) Provide Student B outputs for Section 18
+### Step 5: (Optional) Provide Student B outputs for Section 18
 
 Section 18 builds the joint classical + deep learning comparison table. It reads
 Student B's result CSVs. If not yet available, skip Section 18 — all other sections
@@ -163,16 +163,16 @@ StudentB/Reports/results_balanced_test_distribution.csv
 StudentB/Reports/results_imbalanced_test_distribution.csv
 ```
 
-### Step 6 — Run the notebook
+### Step 6: Run the notebook
 
 Execute all cells sequentially. Estimated total runtime: **7–9 minutes** on CPU
-(dominated by RF training ≈ 42 s and Stacking Ensemble ≈ 339 s).
+(dominated by RF training ≈ 42s and Stacking Ensemble ≈ 339 s).
 
 | Section | Content |
 |---|---|
 | 1 | Imports |
 | 2 | Configure paths and create output directories |
-| 3 | Load preprocessed features — verify dataset shapes |
+| 3 | Load preprocessed features: verify dataset shapes |
 | 4 | Define unified evaluation function |
 | 5 | Define models and imbalance strategies |
 | 6 | Train all models (Strategies A, B, C) |
@@ -183,7 +183,7 @@ Execute all cells sequentially. Estimated total runtime: **7–9 minutes** on CP
 | 11 | RF feature importance analysis |
 | 11.1 | Feature-subset ablation study |
 | 12 | Confusion matrices across 3 test distributions |
-| 13 | ROC curves — all models |
+| 13 | ROC curves: all models |
 | 14 | Imbalance strategy F1 comparison |
 | 15 | Best model across test distributions |
 | 15.1 | Threshold sensitivity analysis |
@@ -214,7 +214,7 @@ Execute all cells sequentially. Estimated total runtime: **7–9 minutes** on CP
 | Stacking Ensemble | 0.3367 |
 | RF (no handling) | 0.3631 |
 
-All models are below 0.4 ms/URL — suitable for real-time browser/firewall deployment.
+All models are below 0.4 ms/URL: suitable for real-time browser/firewall deployment.
 
 ---
 

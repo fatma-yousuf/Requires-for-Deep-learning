@@ -1,21 +1,18 @@
-# AI Usage Log — Student C (Fatma Abu Al Wafa)
+# AI Usage Log: Student C (Fatma Abu Al Wafa)
 ## Project 9: Neural Models for Phishing URL and Website Detection
 ## Queen's University | CISC 867 Deep Learning | 2026
 
 ---
 
 ## Tools Used
-
 - Claude (Anthropic)
 - ChatGPT (OpenAI)
-- Kimi (Moonshot AI)
-
 ---
 
 ## Allowed Uses — With Disclosure
 
 The following uses comply with the course GenAI policy (brainstorming, debugging
-assistance after the student attempts a fix first, and grammar/phrasing improvements).
+assistance after the student attempts a fix first, and grammar/phrasing improvements.
 
 ### 1. Brainstorming and Concept Clarification
 
@@ -23,7 +20,7 @@ AI tools were used to:
 
 - Brainstorm the design of the 3-strategy imbalance comparison (None / Weighted / SMOTE)
   and validate the decision to exclude SMOTE from tree-based models.
-- Clarify the correct interpretation of `passthrough=False` in `StackingClassifier`
+- Clarify the correct interpretation of `passthrough=False` in `StackingClassifier.`
   (meta-learner receives only base-model out-of-fold predictions, not original features).
 - Clarify why `pos_weight = neg_count / pos_count` is the correct XGBoost imbalance
   correction formula.
@@ -32,7 +29,7 @@ AI tools were used to:
 - Clarify the relationship between classification threshold and FPR/FNR trade-off for
   the deployment context analysis (corporate firewall vs. browser plugin).
 
-### 2. Debugging Assistance (after student's own attempt)
+### 2. Debugging Assistance (after the student's own attempt)
 
 All bugs below were encountered, identified, and a student fix was attempted first.
 AI assistance was used only to confirm or improve the fix.
@@ -49,15 +46,15 @@ AI's suggestion confirmed: wrap `LinearSVC` in
 `CalibratedClassifierCV(method='sigmoid', cv=3)` instead, which adds
 calibrated probability output without skipping the metric.
 
-Decision: the AI suggestion was accepted because it preserves AUC comparison
+Decision: The AI suggestion was accepted because it preserves the AUC comparison
 across all models.
 
 **Bug 2 — Validation set not being evaluated on the original (unscaled) test set (Minor)**
 
-Student identified that best-model inference on the error analysis section
+The student identified the best model inference in the error analysis section
 used the wrong feature matrix (scaled instead of unscaled for RF/Stacking).
 
-AI confirmed: add a flag `use_unscaled = any(tag in best_name for tag in ["RF", "XGB", "Stack"])`
+AI confirmed: add a flag `use_unscaled = any(tag in best_name for tag in ["RF", "XGB", "Stack"]).`
 to select the correct feature matrix per model.
 
 **Bug 3 — `f1_score` zero-division warning in ablation study (Minor)**
@@ -73,8 +70,7 @@ Decision: accepted.
   imbalance strategy label for the pivot-table visualisation, instead of
   duplicating logic across cells.
 - Suggested passing `feature_cols` as an explicit parameter to the dataset class
-  rather than using a global variable (applied to the fusion dataset class in
-  Student B's notebook — passed as a suggestion to Student B).
+  Rather than using a global variable.
 - Reviewed the final deliverables checklist logic to ensure all 19 files are
   verified before the notebook is closed.
 
@@ -83,14 +79,13 @@ Decision: accepted.
 AI tools were used for minor grammar and phrasing review of:
 
 - Notebook markdown cells (section headers and interpretation paragraphs).
-- Report sections after being written manually (Discussion, Limitations).
-- This README and LOG.md files.
+- Report sections after being written manually.
+- These README and LOG.md files.
 
 All content was written manually first. AI reviewed phrasing only — it did not
 generate report sections or analytical conclusions.
 
 ---
-
 ## Not Allowed — Confirmed Not Used
 
 In compliance with the course GenAI policy, AI tools were **not** used to:
@@ -104,21 +99,20 @@ In compliance with the course GenAI policy, AI tools were **not** used to:
 All notebook cells were executed manually and verified before being committed
 to the repository. All results in output CSVs and figures are based on
 code that was run and checked by the student.
-
 ---
 
 ## Summary Table
 
 | Area | AI Role | Policy Status |
 |---|---|---|
-| Imbalance strategy design | Brainstorming + validation | ✅ Allowed |
-| `CalibratedClassifierCV` fix | Debugging (after student attempt) | ✅ Allowed |
-| Gini importance interpretation | Concept clarification | ✅ Allowed |
-| Threshold deployment guidance | Concept clarification | ✅ Allowed |
-| Ablation zero-division fix | Debugging (minor) | ✅ Allowed |
-| Feature matrix selection fix | Debugging (minor) | ✅ Allowed |
-| Notebook markdown readability | Grammar / phrasing | ✅ Allowed |
-| Report Discussion section | Grammar review of manual text | ✅ Allowed |
-| Generating results / figures | — | ❌ Not used |
-| Writing report sections | — | ❌ Not used |
-| End-to-end implementation | — | ❌ Not used |
+| Imbalance strategy design | Brainstorming + validation | Allowed |
+| `CalibratedClassifierCV` fix | Debugging (after student attempt) | Allowed |
+| Gini importance interpretation | Concept clarification | Allowed |
+| Threshold deployment guidance | Concept clarification | Allowed |
+| Ablation zero-division fix | Debugging (minor) | Allowed |
+| Feature matrix selection fix | Debugging (minor) | Allowed |
+| Notebook markdown readability | Grammar / phrasing | Allowed |
+| Report Discussion section | Grammar review of manual text | Allowed |
+| Generating results / figures | — | Not used |
+| Writing report sections | — | Not used |
+| End-to-end implementation | — | Not used |

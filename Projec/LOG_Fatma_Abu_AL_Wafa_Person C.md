@@ -5,9 +5,6 @@
 **Role:** Student C — Baseline features, imbalanced handling, reporting  
 **Notebook:** `StudentC/notebook/Student_C_baseline_models_Final_Version.ipynb`
 
-> This log documents weekly progress, key decisions, and issues encountered.
-> It can be merged into the main team's `LOG.md`.
-
 ---
 ## Week 1:  09 May 2026 to 12 May 2026
 

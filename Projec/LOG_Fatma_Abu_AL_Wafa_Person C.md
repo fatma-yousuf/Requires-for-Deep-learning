@@ -2,7 +2,7 @@
 ## Project 9: Neural Models for Phishing URL and Website Detection
 ## Queen's University | CISC 867 Deep Learning | 2026
 
-**Role:** Student C — Baseline features, imbalanced handling, reporting  
+**Role:** Student C: Baseline features, imbalanced handling, reporting  
 **Notebook:** `StudentC/notebook/Student_C_baseline_models_Final_Version.ipynb`
 
 ---

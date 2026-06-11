@@ -30,7 +30,7 @@
 
 ---
 
-## Week 2 — 13 May 2026 to 16 May 2026
+## Week 2: 13 May 2026 to 16 May 2026
 
 ### Progress
 - Implemented all 10 model configurations (4 families × 3 strategies, minus SMOTE for RF/XGB).
